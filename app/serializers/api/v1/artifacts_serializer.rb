@@ -13,7 +13,7 @@ module Api
       def properties
         {
           name: object.name,
-          long_description: object.long_description
+          description: "#{object.name}<br/>#{object.long_description}"
         }
       end
 
