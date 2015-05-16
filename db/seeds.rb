@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Artifact.create(
+  name: 'Cyprus000162',
+  artifact_type: 'defibrillator',
+  address: "6 Salem Road, London, W2 4BU",
+  lonlat: 'POINT(54.0, -2.5)',
+  source: 'OpenStreetMap',
+  source_id: "1_234",
+  long_description: "N/A"
+)
