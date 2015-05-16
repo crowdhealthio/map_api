@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ArtifactsController < ActionController::Base
+    class ArtifactsController < ApiController
 
       def index
         render json: geo_json(Artifact.all)
@@ -16,16 +16,16 @@ module Api
         end
       end
 
-      private
-
-      def geo_json(artifacts)
-
-        {
-          type: "FeatureCollection",
-          features: artifacts.map { |artifact| ArtifactsSerializer.new(artifact) }
-        }
-
+      def update
+        artifact = Artifact.find_by(id: params[:id])
+        if artifact.update(artifact_params)
+          render json: artifact
+        else
+          render_errors_for artifact
+        end
       end
+
+      private
 
       def artifact_params
         params.permit(

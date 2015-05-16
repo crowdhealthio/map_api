@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TypesController < ActionController::Base
+    class TypesController < ApiController
       def index
         render json: Artifact.types, each_serializer: TypesSerializer
       end
@@ -19,18 +19,6 @@ module Api
                   .where(artifact_type: params[:type_id])
         )
       end
-
-      private
-
-      def geo_json(artifacts)
-
-        {
-          type: "FeatureCollection",
-          features: artifacts.map { |artifact| ArtifactsSerializer.new(artifact) }
-        }
-
-      end
-
     end
   end
 end
