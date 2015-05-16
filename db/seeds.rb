@@ -10,8 +10,8 @@ Artifact.create(
   name: 'Cyprus000162',
   artifact_type: 'defibrillator',
   address: "6 Salem Road, London, W2 4BU",
-  lng: "54.12345",
-  lat: "-2.678",
+  lng: "-76.707487",
+  lat: "37.260955",
   source: 'OpenStreetMap',
   source_id: "1_234",
   long_description: "N/A"
