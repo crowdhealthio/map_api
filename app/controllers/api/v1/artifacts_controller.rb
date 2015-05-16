@@ -3,28 +3,30 @@ module Api
     class ArtifactsController < ActionController::Base
 
       def index
-        render json: Object.new
+        render json: Artifact.all
       end
 
       def create
-        location = Location.build(location_params)
+        artifact = Artifact.new(artifact_params["artifact"])
 
-        if location.save
-          render json: location, serializer: locationesSerializer, status: :created
+        if artifact.save
+          render json: artifact
         else
-          render json: location.errors, status: :unprocessable_entity
+          render json: artifact.errors, status: :unprocessable_entity
         end
       end
 
       private
 
-      def location_params
+      def artifact_params
         params.permit(
-          location: [
+          artifact: [
             :name,
             :long_description,
-            :lat,
-            :lng
+            :lnglat,
+            :supplier,
+            :supplier_id,
+            :address
           ]
         )
       end
