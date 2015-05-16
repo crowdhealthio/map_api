@@ -3,7 +3,7 @@ module Api
     class ArtifactsController < ActionController::Base
 
       def index
-        render json: Artifact.all
+        render json: geo_json(Artifact.all)
       end
 
       def create
@@ -18,6 +18,15 @@ module Api
 
       private
 
+      def geo_json(artifacts)
+
+        {
+          type: "FeatureCollection",
+          features: artifacts.map { |artifact| ArtifactsSerializer.new(artifact) }
+        }
+
+      end
+
       def artifact_params
         params.permit(
           artifact: [
@@ -25,8 +34,8 @@ module Api
             :long_description,
             :lng,
             :lat,
-            :supplier,
-            :supplier_id,
+            :source,
+            :source_id,
             :address
           ]
         )
