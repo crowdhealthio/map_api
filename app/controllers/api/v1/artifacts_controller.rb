@@ -23,7 +23,8 @@ module Api
           artifact: [
             :name,
             :long_description,
-            :lnglat,
+            :lng,
+            :lat,
             :supplier,
             :supplier_id,
             :address

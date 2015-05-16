@@ -15,16 +15,16 @@ ActiveRecord::Schema.define(version: 20150516111332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "artifacts", force: :cascade do |t|
-    t.string    "name"
-    t.text      "address"
-    t.text      "long_description"
-    t.geography "lonlat",           limit: {:srid=>4326, :type=>"point", :geographic=>true}
-    t.string    "artifact_type"
-    t.string    "source"
-    t.string    "source_id"
+    t.string "name"
+    t.text   "address"
+    t.text   "long_description"
+    t.string "lat"
+    t.string "lng"
+    t.string "artifact_type"
+    t.string "source"
+    t.string "source_id"
   end
 
 end

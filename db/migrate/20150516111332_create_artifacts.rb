@@ -4,7 +4,8 @@ class CreateArtifacts < ActiveRecord::Migration
       t.string :name
       t.text :address
       t.text :long_description
-      t.st_point :lonlat, geographic: true
+      t.string :lat
+      t.string :lng
       t.string :artifact_type
       t.string :source
       t.string :source_id
