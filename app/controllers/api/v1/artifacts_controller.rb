@@ -36,7 +36,8 @@ module Api
             :lat,
             :source,
             :source_id,
-            :address
+            :address,
+            :artifact_type
           ]
         )
       end
