@@ -12,7 +12,7 @@ module Api
       def nearest
         lat = params["lat"]
         lng = params["lng"]
-        space = [lat.to_f, lng.to_f]
+        space = [lng.to_f, lat.to_f]
 
         render json: geo_json(
           Artifact.within(5, origin: space)
