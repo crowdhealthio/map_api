@@ -14,8 +14,6 @@ module Api
         lng = params["lng"]
         space = [lat.to_f, lng.to_f]
 
-        pp space
-
         render json: geo_json(
           Artifact.within(5, origin: space)
                   .where(artifact_type: params[:type_id])
