@@ -4,8 +4,8 @@ class CreateArtifacts < ActiveRecord::Migration
       t.string :name
       t.text :address
       t.text :long_description
-      t.string :lat
-      t.string :lng
+      t.float :lat
+      t.float :lng
       t.string :artifact_type
       t.string :source
       t.string :source_id
