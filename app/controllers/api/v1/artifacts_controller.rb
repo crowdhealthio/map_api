@@ -8,6 +8,9 @@ module Api
 
       def create
         artifact = Artifact.new(artifact_params["artifact"])
+        # artifact.type = Type.find_or_create_by(
+        #   name: pluralize(1, artifact_params["artifact"]["artifact_type"])
+        # )
 
         if artifact.save
           render json: artifact
@@ -40,20 +43,12 @@ module Api
 
       private
 
+      def as_machine_id(string)
+        string = string.downcase
+      end
+
       def artifact_params
-        params.permit(
-          artifact: [
-            :name,
-            :long_description,
-            :lng,
-            :lat,
-            :source,
-            :source_id,
-            :address,
-            :artifact_type,
-            :properties
-          ]
-        )
+        params.permit!
       end
     end
   end
