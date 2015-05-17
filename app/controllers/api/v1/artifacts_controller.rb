@@ -34,6 +34,10 @@ module Api
         end
       end
 
+      def show
+        render json: Artifact.find_by(id: params[:id])
+      end
+
       private
 
       def artifact_params
