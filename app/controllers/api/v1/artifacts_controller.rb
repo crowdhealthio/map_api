@@ -25,6 +25,15 @@ module Api
         end
       end
 
+      def destroy
+        artifact = Artifact.find_by(id: params[:id])
+        if artifact.destroy
+          head :ok
+        else
+          render_errors_for artifact
+        end
+      end
+
       private
 
       def artifact_params
