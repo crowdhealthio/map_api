@@ -11,6 +11,7 @@ module Api
       end
 
       def properties
+        object.properties ||= {}
         {
           id: object.id,
           name: object.name,
