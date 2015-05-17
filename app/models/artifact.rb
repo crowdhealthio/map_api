@@ -1,5 +1,7 @@
 class Artifact < ActiveRecord::Base
 
+  belongs_to :type
+  store_accessor :properties
   acts_as_mappable default_units: :miles
 
   def nearest(lat, lng)
@@ -11,5 +13,4 @@ class Artifact < ActiveRecord::Base
       { type: artifact }
     end
   end
-
 end

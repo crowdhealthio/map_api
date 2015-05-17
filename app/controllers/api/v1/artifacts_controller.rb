@@ -3,14 +3,23 @@ module Api
     class ArtifactsController < ApiController
 
       def index
-        render json: geo_json(Artifact.all)
+
+        distance = params["distance"] if params["distance"]
+        space = [params["lng"], params["lat"]] if params["lng"] && params["lat"]
+
+        artifacts = Artifact.where(type_id: params["type_id"]) if params["type_id"]
+        artifacts ||= Artifact.all
+
+        artifacts.within(distance, origin: space) if space && distance
+
+        render json: geo_json(artifacts)
       end
 
       def create
         artifact = Artifact.new(artifact_params["artifact"])
-        # artifact.type = Type.find_or_create_by(
-        #   name: pluralize(1, artifact_params["artifact"]["artifact_type"])
-        # )
+        artifact.type = Type.find_or_create_by(
+          name: artifact_params["artifact"]["artifact_type"].pluralize
+        )
 
         if artifact.save
           render json: artifact

@@ -1,12 +1,13 @@
 module Api
   module V1
     class TypesController < ApiController
+
       def index
-        render json: Artifact.types, each_serializer: TypesSerializer
+        render json: Type.all, each_serializer: TypesSerializer
       end
 
       def show
-        render json: geo_json(Artifact.where(artifact_type: params[:id]))
+        render json: Type.find_by(id: params[:id]), serializer: TypesSerializer
       end
 
       def nearest
@@ -17,9 +18,11 @@ module Api
 
         render json: geo_json(
           Artifact.within(distance, origin: space)
+                  .by_distance
                   .where(artifact_type: params[:type_id])
         )
       end
+
     end
   end
 end
