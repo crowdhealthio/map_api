@@ -38,7 +38,7 @@ module Api
       end
 
       def show
-        render json: Artifact.find_by(id: params[:id])
+        render json: geo_json(Artifact.where(id: params[:id]).limit(1))
       end
 
       private
