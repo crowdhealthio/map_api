@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :types, only: [:index, :show] do
         get 'nearest'
       end
+      resources :nearest, only: [:show]
     end
   end
 end
