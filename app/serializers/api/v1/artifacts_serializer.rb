@@ -15,7 +15,7 @@ module Api
           id: object.id,
           name: object.name,
           description: "#{object.name}<br/>#{object.long_description}"
-        }
+        }.merge(object.properties)
       end
 
       def geometry
