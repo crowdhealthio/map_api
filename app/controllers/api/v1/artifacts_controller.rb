@@ -50,7 +50,8 @@ module Api
             :source,
             :source_id,
             :address,
-            :artifact_type
+            :artifact_type,
+            :properties
           ]
         )
       end

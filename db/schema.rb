@@ -11,20 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516111332) do
+ActiveRecord::Schema.define(version: 20150517091947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "artifacts", force: :cascade do |t|
+    t.string  "name"
+    t.text    "address"
+    t.text    "long_description"
+    t.float   "lat"
+    t.float   "lng"
+    t.string  "artifact_type"
+    t.string  "source"
+    t.string  "source_id"
+    t.integer "type_id"
+    t.hstore  "properties"
+  end
+
+  create_table "types", force: :cascade do |t|
     t.string "name"
-    t.text   "address"
-    t.text   "long_description"
-    t.float  "lat"
-    t.float  "lng"
-    t.string "artifact_type"
-    t.string "source"
-    t.string "source_id"
   end
 
 end
