@@ -11,7 +11,7 @@ module Api
         lng = params["lng"]
         space = [lng.to_f, lat.to_f]
 
-        render json: geo_json(Artifact.closest(origin: space))
+        render json: geo_json(Artifact.where(type_id: params["id"]).closest(origin: space))
       end
 
     end
