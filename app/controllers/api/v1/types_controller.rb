@@ -12,10 +12,11 @@ module Api
       def nearest
         lat = params["lat"]
         lng = params["lng"]
+        distance = params["distance"] || 5
         space = [lng.to_f, lat.to_f]
 
         render json: geo_json(
-          Artifact.within(5, origin: space)
+          Artifact.within(distance, origin: space)
                   .where(artifact_type: params[:type_id])
         )
       end
