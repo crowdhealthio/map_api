@@ -12,6 +12,7 @@ module Api
 
       def properties
         {
+          id: object.id,
           name: object.name,
           description: "#{object.name}<br/>#{object.long_description}"
         }
